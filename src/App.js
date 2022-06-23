@@ -1,12 +1,25 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios'
 
 function App() {
   const [index, setIndex] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [onePokemon, setOnePok] = useState([]);
+  const background = useRef(null);
+  const mostrarRef = () =>{
+    console.log(background.current.className)
+  } 
+  // const handleChange = e => {
+  //   const { value, name } = e;
+  //   console.log(name); // obteniendo el name attr del input desde el evento
+  //   console.log(value); // obteniendo el valor del input desde el evento
+
+  //   // console.log(inputRef.current.value); // obteniendo el valor del input desde el ref
+  //   // console.log(inputRef.curren.name); // obteniendo el name attr del input desde el ref
+
+  // };
   // const [urlPokemon, setUrlPokemon] = useState("")
   // const [Pokemon, setPokemon] = useState({})
 
@@ -79,12 +92,13 @@ function App() {
         </li>
         
       </ul>
-      <div className='grid'>
+      <div className='grid' >
       <button className='btn btn-outline-danger pst pst_back' onClick={() => {setIndex(index - 10);}}>Back</button>
       <button className='btn btn-outline-danger pst pst_next' onClick={() => {setIndex(index + 10);}}>Next</button>
+      {/* <button className='btn btn-dark' onClick={mostrarRef}>Mostrar</button> */}
         {
           onePokemon.length > 0 ? onePokemon.slice(0, 10).map((value, index) => (    
-            <div key={index} className={[
+            <div key={index} ref={background} onClick={mostrarRef} className={[
                 'card custom',
                 // value.data.types[0].type.name=="water" ? 'card custom bg-b' : '',
                 value.data.types[0].type.name=="fire" ? 'card custom bg-r color-w' : (value.data.types[0].type.name=="water" ? 'card custom bg-b color-w' 
@@ -92,7 +106,7 @@ function App() {
                 :(value.data.types[0].type.name=="ground" ? 'card custom bg-w color-w' :(value.data.types[0].type.name=="fighting" ? 'card custom bg-c color-w' 
                 :(value.data.types[0].type.name=="poison" ? 'card custom bg-m color-w' :(value.data.types[0].type.name=="fairy" ? 'card custom bg-rs color-w' 
                 :(value.data.types[0].type.name=="electric" ? 'card custom bg-el color-w' :(value.data.types[0].type.name=="ghost" ? 'card custom bg-dr color-w' 
-                :(value.data.types[0].type.name=="rock" ? 'card custom bg-g color-w' :(value.data.types[0].type.name=="psychic" ? 'card custom bg-ps color-w' :'card custom')))))))))))
+                :(value.data.types[0].type.name=="rock" ? 'card custom bg-g color-w' :(value.data.types[0].type.name=="psychic" ? 'card custom bg-ps color-w' :'card custom bg-nor')))))))))))
                  
                 ]}>
                 <div class="container h-custom">
