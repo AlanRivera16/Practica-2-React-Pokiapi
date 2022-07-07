@@ -2,28 +2,50 @@
 import './App.css';
 import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios'
-import { BuscadorProvider, SearcherConsumer, Result} from './context/global/global.context'
+import { SearcherConsumer, Show, SearchProvider} from './context/global/global.context'
+
+
+export default () => <SearchProvider>
+    <SearcherConsumer />
+    <App />
+  </SearchProvider>
+
 
 function App() {
+  const results = Show();
   const [index, setIndex] = useState(0);
+  const [indeTwo, setIndexTwo] = useState(10);
   const [pokemons, setPokemons] = useState([]);
   const [onePokemon, setOnePok] = useState([]);
   const background = useRef(null);
   const mostrarRef = () =>{
     console.log(background.current.className)
-  } 
-  
-  
+  }
 
   useEffect(()=>{
-    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${index}&limit=10`).then(value=>{
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1126`).then(value=>{
       setPokemons(value.data.results);
-      // console.log(value.data.results);
     })
-  }, [index]);
+  }, []);
+  
+  useEffect(()=>{
+    console.log(results.finder);
+    if(pokemons){
+      pokemons.slice(index,indeTwo).filter((data)=>{
+        if(data.name.toString().toLowerCase().includes(results.finder)){
+          setOnePok([]);
+          const url = data.url.split('/');
+          axios.get(`https://pokeapi.co/api/v2/pokemon/${url[6]}`).then((value) => {
+            setOnePok((current) => [...current, value]);
+            console.log(onePokemon);
+          });
+        }
+      })
+    }
+  },[results])
 
   useEffect(()=>{
-    pokemons.map(data => {
+    pokemons.slice(index,indeTwo).map(data => {
       const url = data.url.split('/');
       axios.get(`https://pokeapi.co/api/v2/pokemon/${url[6]}`).then(value =>{
         setOnePok((current) => [...current, value]);
@@ -33,7 +55,7 @@ function App() {
 
   useEffect(()=>{
     setOnePok([]);
-    pokemons.map(data => {
+    pokemons.slice(index,indeTwo).map(data => {
       const url = data.url.split('/');
       axios.get(`https://pokeapi.co/api/v2/pokemon/${url[6]}`).then((value)=>{
         setOnePok((current) => [...current,value]);
@@ -42,23 +64,36 @@ function App() {
     });
   }, [index]);
 
+  useEffect(()=>{
+    
+  })
+
+  // const changePokemon = () => {
+  //   if(pokemons){
+  //     var index = pokemons.slice(onePOK, twoPOK);
+  //     index.map(data => {
+  //       const url = data.url.split()
+  //     })
+  //   }
+  // }
+
   return (
     <div className="App">
      {/* <h1 className='titulo' ngClass="asd">POKE API</h1>
       <hr></hr> */}
-      <ul class="nav bg-danger text-white justify-content-center">
+      <ul className="nav bg-danger text-white justify-content-center">
         
-        <li class="nav-item">
+        <li className="nav-item">
           <h1 >POKE API PRÁCTICA 2</h1>
         </li>
         
       </ul>
       <div className='grid' >
-      <button className='btn btn-outline-danger pst pst_back' onClick={() => {setIndex(index - 10);}}>Back</button>
-      <button className='btn btn-outline-danger pst pst_next' onClick={() => {setIndex(index + 10);}}>Next</button>
+      <button className='btn btn-outline-danger pst pst_back' onClick={() => {setIndex(index - 10);setIndexTwo(indeTwo-10)}}>Back</button>
+      <button className='btn btn-outline-danger pst pst_next' onClick={() => {setIndex(index + 10);setIndexTwo(indeTwo+10)}}>Next</button>
       {/* <button className='btn btn-dark' onClick={mostrarRef}>Mostrar</button> */}
         {
-          onePokemon.length > 0 ? onePokemon.slice(0, 10).map((value, index) => (    
+          onePokemon.slice(0,10).length > 0 ? onePokemon.slice(0, 10).map((value, index) => (    
             <div key={index} ref={background} onClick={mostrarRef} className={[
                 'card custom',
                 // value.data.types[0].type.name=="water" ? 'card custom bg-b' : '',
@@ -70,9 +105,9 @@ function App() {
                 :(value.data.types[0].type.name=="rock" ? 'card custom bg-g color-w' :(value.data.types[0].type.name=="psychic" ? 'card custom bg-ps color-w' :'card custom bg-nor')))))))))))
                  
                 ]}>
-                <div class="container h-custom">
-                  <div class="row align-items-center relative h-custom">
-                    <div class="col-9 custom-w">
+                <div className="container h-custom">
+                  <div className="row align-items-center relative h-custom">
+                    <div className="col-9 custom-w">
                       <h4 className=''><b className='uppercase'>{value.data.name}</b></h4>
                       {/* <small>{value.data.types[0].type.name}</small> */}
                       <small className='fs-ss '>HABILIDADES</small>
@@ -96,4 +131,3 @@ function App() {
   );
 }
 
-export default App;
