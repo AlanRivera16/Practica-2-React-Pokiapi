@@ -2,6 +2,7 @@
 import './App.css';
 import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios'
+import { BuscadorProvider, SearcherConsumer, Result} from './context/global/global.context'
 
 function App() {
   const [index, setIndex] = useState(0);
@@ -11,48 +12,8 @@ function App() {
   const mostrarRef = () =>{
     console.log(background.current.className)
   } 
-  // const handleChange = e => {
-  //   const { value, name } = e;
-  //   console.log(name); // obteniendo el name attr del input desde el evento
-  //   console.log(value); // obteniendo el valor del input desde el evento
-
-  //   // console.log(inputRef.current.value); // obteniendo el valor del input desde el ref
-  //   // console.log(inputRef.curren.name); // obteniendo el name attr del input desde el ref
-
-  // };
-  // const [urlPokemon, setUrlPokemon] = useState("")
-  // const [Pokemon, setPokemon] = useState({})
-
-  // const fetchApi = async () => {
-  //   const response = await fetch(url)
-  //   // console.log(response.status);
-  //   const responseJSON = await response.json()
-  //   await setTodos(responseJSON.results)
-  //   // console.log(responseJSON.results);
-  //   // console.log(todos);
-  //   await setUrlPokemon(responseJSON.results[0].url)
-  //   // console.log(responseJSON.results[0].url);
-  //   return responseJSON.results
-    
-  // }
   
-
-  // function fetchAPIPOKEMON(url){
-  //   const responseForPok = fetch(url)
-  //   const resJSONPok = responseForPok.json()
-  //   console.log(resJSONPok);
-  // }
   
-  // useEffect(()=>{
-  //   fetchApi().then(value =>{
-  //     // console.log(value[0].name);
-  //     console.log(value);
-  //     fetch(value[0].url).then((data)=>{
-  //       console.log(data.body);
-  //     })
-  //   })
-  //   // fetchApi1P()
-  // },[])
 
   useEffect(()=>{
     axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${index}&limit=10`).then(value=>{
