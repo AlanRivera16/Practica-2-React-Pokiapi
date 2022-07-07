@@ -84,7 +84,7 @@ function App() {
       <ul className="nav bg-danger text-white justify-content-center">
         
         <li className="nav-item">
-          <h1 >POKE API PRÁCTICA 2</h1>
+          <h1 >POKEAPI - POKEMONS</h1>
         </li>
         
       </ul>
