@@ -1,0 +1,18 @@
+.b-danger{
+    background-color: #dc3545fe;
+}
+
+.fs-m{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.outline:hover{
+    border: solid 1px transparent;
+}
+
+.hover-war:hover{
+    color: yellow;
+}
