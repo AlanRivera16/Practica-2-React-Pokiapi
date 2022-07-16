@@ -12,15 +12,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <Navbar />
-    <React.StrictMode>
-      <BrowserRouter>
+    <BrowserRouter>
         <Routes>
+          <Route path='/' element={<App/>} />
           <Route path='/pokemons' element={<App/>} />
           <Route path='/matricula' element={<Acerca/>} />
           <Route path='/pokemons/:pokemonID' element={<OnePokemon/>} />
         </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
+    </BrowserRouter>
   </div>
 );
 
