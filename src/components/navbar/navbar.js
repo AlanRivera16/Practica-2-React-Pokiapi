@@ -27,11 +27,13 @@ return (
                     </ul>
                 </div>
                 
-                <div class="justify-content-end btn outline">
-                    <button onClick={(e) => i18n.changeLanguage('en')}>Ingles</button>
-                    <button onClick={(e) => i18n.changeLanguage('es')}>Español</button>
-                    <img src={icon} width="40" height="40"/>
+                <div class="justify-content-end">
+                    <img src={icon} class="mr-1" width="35" height="35"/>
+                    <button className="btn text-light" onClick={(e) => i18n.changeLanguage('en')}>Ingles</button>
+                    <span class="text-light">/</span>
+                    <button className="btn text-light" onClick={(e) => i18n.changeLanguage('es')}>Español</button>
                 </div>
+
             </div>
         </nav>
     </div>
