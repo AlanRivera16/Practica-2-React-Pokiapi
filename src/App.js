@@ -4,7 +4,6 @@ import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios'
 import { SearcherConsumer, Show, SearchProvider} from './context/global/global.context'
 
-
 export default () => <SearchProvider>
     <SearcherConsumer />
     <App />
@@ -68,33 +67,22 @@ function App() {
     
   })
 
-  // const changePokemon = () => {
-  //   if(pokemons){
-  //     var index = pokemons.slice(onePOK, twoPOK);
-  //     index.map(data => {
-  //       const url = data.url.split()
-  //     })
-  //   }
-  // }
-
   return (
     <div className="App">
-     {/* <h1 className='titulo' ngClass="asd">POKE API</h1>
-      <hr></hr> */}
       <ul className="nav bg-danger text-white justify-content-center">
         
         <li className="nav-item">
-          <h1 >POKEAPI - POKEMONS</h1>
+          <h1 >POKEMONS</h1>
         </li>
         
       </ul>
       <div className='grid' >
       <button className='btn btn-outline-danger pst pst_back' onClick={() => {setIndex(index - 10);setIndexTwo(indeTwo-10)}}>Back</button>
       <button className='btn btn-outline-danger pst pst_next' onClick={() => {setIndex(index + 10);setIndexTwo(indeTwo+10)}}>Next</button>
-      {/* <button className='btn btn-dark' onClick={mostrarRef}>Mostrar</button> */}
+
         {
           onePokemon.slice(0,10).length > 0 ? onePokemon.slice(0, 10).map((value, index) => (    
-            <div key={index} ref={background} onClick={mostrarRef} className={[
+            <div key={index}  onClick={(e) => window.location.href = `/pokemons/${value.data.id}`} className={[
                 'card custom',
                 // value.data.types[0].type.name=="water" ? 'card custom bg-b' : '',
                 value.data.types[0].type.name=="fire" ? 'card custom bg-r color-w' : (value.data.types[0].type.name=="water" ? 'card custom bg-b color-w' 

@@ -22,9 +22,6 @@ export function SearcherConsumer(props) {
     const { setBuscador } = useContext(Searcher);
     return(
         <div>
-            <div className="top">
-            <h4 className="title">Buscar Pokemon</h4>
-            </div>
             <div className="center">
                 <img style={{width:"25px", height:"25px", marginRight:"5px"}} src={svg}/>
                 <input style={{marginTop:"8px", marginBottom:"8px"}} type="text" onChange={(e) => setBuscador(e.target.value.toLowerCase())}/>        
