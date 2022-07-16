@@ -1,0 +1,13 @@
+{
+    "inicio": "Inicio",
+    "acerca_de": "Acerca de",
+    "habilidades": "HABILIDADES",
+    "matricula": "Matrícula",
+    "grado_grupo":"Grado y Grupo",
+    "carrera":"Carrera",
+    "turno":"Turno",
+    "turno_res":"Vespertino",
+    "movimientos":"MOVIMIENTOS",
+    "no_mov": "NO MOVIMIENTOS",
+    "no_hab": "NO HABILIDADES"
+}

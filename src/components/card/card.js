@@ -13,9 +13,12 @@ import electric from "../../sources/back-electric.jpg"
 import ground from "../../sources/back-ground.jpg"
 import psychic from "../../sources/back-physic.jpg"
 import fight from "../../sources/back-fight.jpg"
+import { useTranslation } from 'react-i18next';
 
 
 function OnePokemon(){
+    const { t, i18n } = useTranslation(['traductor']);
+
     const url = window.location.pathname.split('/');
     const [onePokemon, setPokemon] = useState([]);
     const [back, setBack] = useState ();
@@ -102,19 +105,19 @@ function OnePokemon(){
                                 </h5>
                                 <div class="row">
                                     <div class="col-6" style={{textAlign:"start", fontWeight:"bold", height:"180px",overflowY:"scroll"}}>
-                                        <p class="text-center bg-secondary rounded-pill text-light m-1">MOVIMIENTOS</p>
+                                        <p class="text-center bg-secondary rounded-pill text-light m-1">{t("movimientos")}</p>
                                         {onePokemon.moves.length > 0 ? onePokemon.moves.slice(0, 10).map((data, index) => (
                                             <ul style={{fontSize:"12px", margin:"5px"}} key={index}>{data.move.name}</ul>
                                         )) : (
-                                            <ul>No hay movimientos</ul>
+                                            <ul>{t("no_mov")}</ul>
                                         )}
                                     </div>
                                     <div class="col-6" style={{textAlign:"start", fontWeight:"bold", height:"180px",overflowY:"scroll"}}>
-                                    <p class="text-center bg-secondary rounded-pill text-light m-1">HABILIDADES</p>
+                                    <p class="text-center bg-secondary rounded-pill text-light m-1">{t("habilidades")}</p>
                                     {onePokemon.abilities.length > 0 ? onePokemon.abilities.slice(0, 10).map((data, index) => (
                                         <ul style={{fontSize:"12px", margin:"5px"}} key={index}>{data.ability.name}</ul>
                                         )) : (
-                                        <ul>No hay habilidades</ul>
+                                        <ul>{t("no_hab")}</ul>
                                         )}
                                     </div>
                                 </div>

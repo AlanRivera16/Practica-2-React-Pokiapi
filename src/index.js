@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Acerca from './components/acerca_de/acerca_de';
 import OnePokemon from './components/card/card';
+import "./config/traductor-config"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

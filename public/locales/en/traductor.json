@@ -1,0 +1,13 @@
+{
+    "inicio": "Home",
+    "acerca_de": "About",
+    "habilidades": "HABILITIES",
+    "matricula": "ID",
+    "grado_grupo":"Grade and Group",
+    "carrera":"Career",
+    "turno":"Shift",
+    "turno_res":"Afternoon",
+    "movimientos":"MOVES",
+    "no_mov": "NO MOVES",
+    "no_hab": "NO HABILITIES"
+}

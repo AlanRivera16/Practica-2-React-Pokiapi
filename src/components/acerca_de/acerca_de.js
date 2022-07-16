@@ -2,8 +2,11 @@ import React from "react";
 import "../acerca_de/acerca_de.css"
 import imagen from "../../sources/name.png"
 import foto from "../../sources/alan.jpeg"
+import { useTranslation } from 'react-i18next';
 
 export default function Acerca(){
+
+    const { t, i18n } = useTranslation(['traductor']);
 
     return(
         <div class="" style={{overflowX: "hidden"}}>
@@ -17,10 +20,10 @@ export default function Acerca(){
                 <div class="col-8 justify-content-center"> 
                     <div class="container">
                         <div class="row" style={{ marginTop: "70px", width: "100%" }}>
-                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">Matrícula <br /><span class="badge bg-danger m-2">191338</span></h5></div>
-                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">Grado y Grupo <br /><span class="badge bg-danger m-2">9-A</span></h5></div>
-                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">Carrera <br /><span class="badge bg-danger m-2">IDGS</span></h5></div>
-                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">Turno <br /><span class="badge bg-danger m-2">Vespertino</span></h5></div>
+                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">{t("matricula")} <br /><span class="badge bg-danger m-2">191338</span></h5></div>
+                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">{t("grado_grupo")} <br /><span class="badge bg-danger m-2">9-A</span></h5></div>
+                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">{t("carrera")} <br /><span class="badge bg-danger m-2">IDGS</span></h5></div>
+                            <div class="col m-2 card shadow bg-body rounded"><h5 class="text-center m-2">{t("turno")} <br /><span class="badge bg-danger m-2">{t("turno_res")}</span></h5></div>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,8 @@ import './App.css';
 import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios'
 import { SearcherConsumer, Show, SearchProvider} from './context/global/global.context'
+import { useTranslation } from 'react-i18next';
+
 
 export default () => <SearchProvider>
     <SearcherConsumer />
@@ -11,6 +13,8 @@ export default () => <SearchProvider>
 
 
 function App() {
+  const { t, i18n } = useTranslation(['traductor']);
+
   const results = Show();
   const [index, setIndex] = useState(0);
   const [indeTwo, setIndexTwo] = useState(10);
@@ -98,7 +102,7 @@ function App() {
                     <div className="col-9 custom-w">
                       <h4 className=''><b className='uppercase'>{value.data.name}</b></h4>
                       {/* <small>{value.data.types[0].type.name}</small> */}
-                      <small className='fs-ss '>HABILIDADES</small>
+                      <small className='fs-ss '>{t("habilidades")}</small>
                       <div className='d-flex mb-3'>
                         <small className='m-1 fs-s'>{value.data.abilities[0].ability?value.data.abilities[0].ability.name:'N/A'}</small>
                         <small className='m-1 fs-s'>{value.data.abilities[1]?value.data.abilities[1].ability.name: 'N/A'}</small>
