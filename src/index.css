@@ -15,9 +15,8 @@ code {
 .grid {
   display:grid;
   gap: 6rem;
-  grid-template-rows: 11rem;
+  grid-template-rows: 6rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 8rem), 1fr));
-  /* padding: 5%; */
   padding-top: 6%;
   padding-left: 6%;
   padding-right: 10%;
